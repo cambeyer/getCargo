@@ -1,0 +1,12 @@
+{
+  "name": "getcargo-scraper-microservice",
+  "version": "0.0.1",
+  "description": "Scrape products from GetCargo",
+  "dependencies": {
+    "p-limit": "^2.1.0",
+    "request": "^2.88.0"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}
