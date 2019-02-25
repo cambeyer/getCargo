@@ -30,7 +30,7 @@ const makeRequest = (number, resolve, reject) => {
     }, (err, httpResponse, body) => {
         let data;
         try { data = JSON.parse(body); } catch (e) {}
-        if (!err && data) {
+        if (!err && data && data.data && data.data.cargo && data.data.cargo.uid) {
 			console.log("Resolved " + boxNumber);
 			resolve({ boxNumber, data });
         } else {
@@ -49,7 +49,6 @@ Promise.all([...Array(END_BOX_NUMBER - START_BOX_NUMBER + 1).keys()].map((number
 )).then((results) => {
 	console.log("Got results");
 	results = results.filter((result) => result.data);
-	results = results.filter((result) => result.data.data.cargo);
 	console.log("Filtered results");
 	results.sort((result1, result2) => parseInt(result1.data.data.cargo.uid) - parseInt(result2.data.data.cargo.uid));
 	console.log("Sorted results");
